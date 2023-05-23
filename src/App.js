@@ -1,12 +1,15 @@
-import './App.css';
 import '@mui/material';
-import Todo from './Todo';
-import { useEffect, useState } from 'react';
 import { Container, List, Paper } from '@mui/material';
-import AddTodo from './AddTodo';
+import { useEffect, useState } from 'react';
+import './App.css';
+import Navigation from './Navigation';
+import Todo from './Todo';
 import { call } from './service/ApiService';
+import AppTodo from './AddTodo';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   // const [item, setItem] = useState({id : 1, done : true, title: "제목"});
   const [items, setItems] = useState ([
     {id: "ID-1", done: true, title: "제목1"},
@@ -36,23 +39,16 @@ function App() {
     call("/todo", "PUT", item).then(resp => setItems(resp.data));
   }
 
-  const requestOptions = {
-    method: 'GET',
-    headers: {"Content-Type" : "application/json"},
-  };
+  // const requestOptions = {
+  //   method: 'GET',
+  //   headers: {"Content-Type" : "application/json"},
+  // };
 
   useEffect(() => {
-  //   fetch("http://localhost/todo", requestOptions)
-  //   .then(resp => resp.json()) // 첫번째 할일
-  //   .then(
-  //     (resp) => {
-  //       setItems(resp.data);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  // );
-  call("/todo", "GET", null).then((resp) => setItems(resp.data));
+    call("/todo", "GET", null).then((resp) => setItems(resp.data));
+    setTimeout(() => {
+      setLoading(false);
+    }, 300)
 }, []);  
   
   let todoItems = 
@@ -71,12 +67,20 @@ function App() {
     ));
   return (
     <div className='App'>
-      <Container maxWidth="md">
-        <AddTodo addItem={addItem} />
-        {todoItems}
-      </Container>
+      {loading ? (
+        <h1>로딩중 ..</h1>
+      ) : ( 
+      <div>
+        <Navigation />
+        <Container maxWidth="md">
+          <AppTodo addItem={addItem} />
+          {todoItems}
+        </Container>
+      </div>
+      )}
     </div>
   );
+
 }
 
 export default App;
