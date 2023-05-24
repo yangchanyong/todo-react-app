@@ -8,7 +8,7 @@ const Navigation = () => {
       <Toolbar>
         <Grid justifyContent='space-between' container>
           <Grid item>
-            <Typography variant='h6'>오늘의 할일</Typography>
+            <Typography variant='h6'>오늘의 할일 </Typography>
           </Grid>
           <Grid item>
             <Button color='inherit' raised onClick={signout}>로그아웃</Button>

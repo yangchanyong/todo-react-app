@@ -51,20 +51,32 @@ function App() {
     }, 300)
 }, []);  
   
-  let todoItems = 
-    items.length > 0 && 
-    items.map((item) => (
+  // let todoItems = items && items.length > 0 &&  items.map((item) => (
+  //     <Paper style={{margin: 16}}>
+  //       <List>
+  //         <Todo 
+  //           item={item} 
+  //           key={item.id} 
+  //           deleteItem={deleteItem} 
+  //           editItem={editItem}
+  //         />
+  //       </List>
+  //     </Paper>
+  //   ));
+  let todoItems = items && items.length > 0 &&  (
       <Paper style={{margin: 16}}>
         <List>
+          {items.map((item) => (
           <Todo 
             item={item} 
             key={item.id} 
             deleteItem={deleteItem} 
             editItem={editItem}
           />
+          ))}
         </List>
       </Paper>
-    ));
+    );
   return (
     <div className='App'>
       {loading ? (

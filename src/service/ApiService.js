@@ -48,6 +48,15 @@ export function signin(userDTO) {
   })
 }
 
+export function socialLogin(provider) {
+  window.location.href = 
+    API_BASE_URL + 
+    "/oauth2/auth/" + 
+    provider + 
+    "?redirect_url=" + 
+    (window.location.protocol + "//" + window.location.host);
+}
+
 export function signout() {
   localStorage.setItem("ACCESS_TOKEN", null);
   window.location.href="/login";

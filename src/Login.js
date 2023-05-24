@@ -1,5 +1,5 @@
 import React from 'react';
-import { signin } from './service/ApiService';
+import { signin, socialLogin } from './service/ApiService';
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +15,11 @@ const handleSubmit = (e) => {
     console.log(resp.status);
   });
 };
+
+const handleSocialLogin = (provider) => {
+  console.log("github");
+  socialLogin(provider);
+}
 
   return (
     <Container 
@@ -59,6 +64,16 @@ const handleSubmit = (e) => {
           <Grid item xs={12}>
             <Button type='submit' fullWidth variant='contained' color='primary'>
               로그인
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button 
+              fullWidth 
+              variant='contained' 
+              style={{background: '#000'}}
+              onClick={() => {handleSocialLogin("github")}}
+            >
+              깃허브로 로그인
             </Button>
           </Grid>
         </Grid>
