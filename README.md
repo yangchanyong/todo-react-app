@@ -186,15 +186,15 @@ root/src/main/com/chanyongyang/hello/resources/application-oauth2.yml 생성
           registration:
             github:
               client-id: 'id'
-              client-secret: 'github secret key'
+              client-secret: 'GitHub secret key'
               redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
               scope:
                 - user:email
                 - read:user
   
             google:
-              client-id: 'google id'
-              client-secret: 'google secret key'
+              client-id: 'Google id'
+              client-secret: 'Google secret key'
               redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
               scope:
                 - email
@@ -230,6 +230,21 @@ root/src/main/com/chanyongyang/hello/resources/application-oauth2.yml 생성
 
 <!-- USAGE EXAMPLES -->
 ## 사용방법
+
+#### 실행
+1. Spring Boot 프로젝트 실행
+```agsl
+root/src/main/java/com/chanyongyang/hello/HelloApplication.java 실행
+```
+
+2. React 프로젝트 실행
+ - 터미널 실행
+```agsl
+yarn start
+```
+  
+url : localhost:3000
+
 #### 기능소개
 <pre>
 1. 회원
@@ -287,7 +302,11 @@ Personal Project
 ### 프로젝트 후기
 <pre>
 Spring Boot와 React.JS을 입문하기 위해서 프로젝트를 진행하였습니다.
-
+<b>React.js, 스프링부트, AWS로 배우는 웹개발 101</b> 책을 참고하고 진행하였으며
+SPA에 대한 이해, React.JS의 새로움, Security의 중요성을 느꼈습니다.
+프로젝트를 진행하며, React에 대한 이해도가 낮아 많이 어려웠지만
+책을보고, 구글링을 하여 문제사항들을 해결해 나갔습니다.
+자신감은 많이 늘었지만, 자만 하지 않고 더 열심히 정진해야겠습니다.
 </pre>
 
 
